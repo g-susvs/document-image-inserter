@@ -405,7 +405,7 @@ function createComparisonImageCell(
               <w:r>
                 <w:drawing>
                   <wp:inline distT="0" distB="0" distL="0" distR="0">
-                    <wp:extent cx="2400000" cy="3200000"/>
+                     <wp:extent cx="2800000" cy="2500000"/>
                     <wp:effectExtent l="0" t="0" r="0" b="0"/>
                     <wp:docPr id="${comparisonNumber}" name="Comparación ${comparisonNumber} - ${type}"/>
                     <wp:cNvGraphicFramePr>
@@ -427,7 +427,7 @@ function createComparisonImageCell(
                           <pic:spPr>
                             <a:xfrm>
                               <a:off x="0" y="0"/>
-                              <a:ext cx="2400000" cy="3200000"/>
+                               <a:ext cx="2800000" cy="2500000"/>
                             </a:xfrm>
                             <a:prstGeom prst="rect">
                               <a:avLst/>
