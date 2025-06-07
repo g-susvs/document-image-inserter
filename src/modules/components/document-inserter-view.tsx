@@ -32,8 +32,10 @@ import {
   TabsTrigger,
 } from "@/src/shared/components/ui/tabs";
 import { Button } from "@/src/shared/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export const DocumentImageInserter = () => {
+  const router = useRouter();
   const [wordFile, setWordFile] = useState<File | null>(null);
   const [beforeImages, setBeforeImages] = useState<File[]>([]);
   const [afterImages, setAfterImages] = useState<File[]>([]);
@@ -215,8 +217,13 @@ export const DocumentImageInserter = () => {
 
   const totalComparisons = Math.max(beforeImages.length, afterImages.length);
 
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    router.push('/authlogin');
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 relative">
       <div className="max-w-6xl mx-auto space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-bold text-gray-900">
@@ -593,6 +600,13 @@ export const DocumentImageInserter = () => {
           )}
         </div>
       </div>
+      <Button 
+        className="absolute bottom-4 right-4" 
+        type="button" 
+        onClick={handleLogout}
+      >
+        Cerrar sessión
+      </Button>
     </div>
   );
 }

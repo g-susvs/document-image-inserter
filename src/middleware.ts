@@ -7,6 +7,10 @@ export function middleware(request: NextRequest) {
 
   const isLoggedIn = authCookie?.value === "true";
 
+  if(pathname === "/"){
+    return NextResponse.redirect(new URL("/auth/login", request.url));
+  }
+
   // Protege el dashboard (redirige a login si no está logueado)
   if (!isLoggedIn && pathname.startsWith("/home")) {
     return NextResponse.redirect(new URL("/auth/login", request.url));

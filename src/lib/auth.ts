@@ -2,7 +2,6 @@
 import { cookies } from 'next/headers';
 
 export function login(email: string, password: string): boolean {
-  // Lógica dummy
   return email === 'admin@example.com' && password === 'password123';
 }
 
