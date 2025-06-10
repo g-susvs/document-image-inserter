@@ -23,7 +23,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useToast } from "@/src/hooks/use-toast";
-import { ImagePreview } from "@/src/shared/components/image-preview";
 import { Alert, AlertDescription } from "@/src/shared/components/ui/alert";
 import {
   Tabs,
@@ -32,6 +31,7 @@ import {
   TabsTrigger,
 } from "@/src/shared/components/ui/tabs";
 import { Button } from "@/src/shared/components/ui/button";
+import { SortableImageList } from "./sortable-image-list";
 
 export const DocumentImageInserter = () => {
   const [wordFile, setWordFile] = useState<File | null>(null);
@@ -339,8 +339,10 @@ export const DocumentImageInserter = () => {
                         <p className="text-sm font-medium text-blue-700">
                           {beforeImages.length} imagen(es) del ANTES:
                         </p>
-                        <ImagePreview
+                        <SortableImageList
                           images={beforeImages}
+                          onChange={(newOrder) => setBeforeImages(newOrder)}
+                          title="Ordena las imágenes del ANTES"
                           onRemoveImage={removeBeforeImage}
                         />
                       </div>
@@ -379,8 +381,10 @@ export const DocumentImageInserter = () => {
                         <p className="text-sm font-medium text-green-700">
                           {afterImages.length} imagen(es) del DESPUÉS:
                         </p>
-                        <ImagePreview
+                        <SortableImageList
                           images={afterImages}
+                          onChange={(newOrder) => setAfterImages(newOrder)}
+                          title="Ordena las imágenes del DESPUÉS"
                           onRemoveImage={removeAfterImage}
                         />
                       </div>
@@ -595,4 +599,4 @@ export const DocumentImageInserter = () => {
       </div>
     </div>
   );
-}
+};
